@@ -20,3 +20,18 @@ class OrderItem{
     order: Order
     product: Product
 }
+
+class Order{
+    total_price  
+    status  
+    client: Client
+}
+
+class Client{
+    first_name  
+    last_name  
+    address  
+    cell_phone  
+    email  
+    gender  
+}
