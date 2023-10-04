@@ -35,3 +35,22 @@ class Client{
     email  
     gender  
 }
+
+class ClientSocialnetwork{
+    client: Client
+    socialnetwork: Socialnetwork
+}
+
+class Socialnetwork{
+    name  
+    description
+}
+
+Product o-- Category
+Client --o ClientSocialnetwork
+Socialnetwork --o  ClientSocialnetwork
+Client --o Order
+Order --o OrderItem
+Product --o OrderItem
+
+@enduml
