@@ -4,5 +4,7 @@ from django.conf import settings
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 " path('admin/', admin.site.urls),".
+path('categorias/', include('categories.urls', namespace='categories')),
+
 
 path('', include('core.urls', namespace='core')),
