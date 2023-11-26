@@ -1,0 +1,11 @@
+<!-- Conteúdo da aventura -->
+<h1>Aventura</h1>
+<p>Pontos ganhos: {{ adventure.points_earned }}</p>
+<p>Itens perdidos:</p>
+<ul>
+  {% for item in adventure.items_lost.all %}
+    <li>{{ item.name }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'market' %}">Ir para o mercado</a>
