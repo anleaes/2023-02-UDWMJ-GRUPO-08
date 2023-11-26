@@ -1,4 +1,5 @@
 # inventory/views.py
+from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import Item, Player, Inventory, Adventure
 
@@ -23,3 +24,5 @@ def buy_item(request, item_id):
         Inventory.objects.create(player=player, item=item)
 
     return redirect('market')
+def index(request):
+    return render(request, 'inventory/index.html')
