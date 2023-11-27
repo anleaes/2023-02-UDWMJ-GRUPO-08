@@ -38,7 +38,9 @@ def buy_item(request, item_id):
     return redirect('market')
 
 def index(request):
-    return render(request, 'inventory/index.html', {'market_url': 'market'})
+    market_url = 'market'
+    adventure_url = 'adventure'
+    return render(request, 'inventory/index.html', {'market_url': market_url, 'adventure_url': adventure_url})
 
 def calcular_pontos_aventura():
     # Implemente a lógica para calcular os pontos ganhos na aventura
