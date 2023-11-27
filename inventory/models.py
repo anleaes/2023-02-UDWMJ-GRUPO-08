@@ -1,4 +1,5 @@
 # inventory/models.py
+
 from django.db import models
 
 class Item(models.Model):
@@ -8,6 +9,7 @@ class Item(models.Model):
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=10)  # Adicione esta linha para o campo gender
     points = models.IntegerField(default=100)
 
 class Inventory(models.Model):
