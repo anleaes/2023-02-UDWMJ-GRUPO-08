@@ -9,7 +9,7 @@ class Item(models.Model):
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=10)  # Adicione esta linha para o campo gender
+    gender = models.CharField(max_length=10, default='Male')  # Defina o valor padrão como 'Male'
     points = models.IntegerField(default=100)
 
 class Inventory(models.Model):
