@@ -2,6 +2,12 @@
 from django.shortcuts import render, redirect
 from .models import Item, Player, Inventory, Adventure
 
+def market(request):
+    player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
+    items = Item.objects.all()
+    context = {'player': player, 'items': items}
+    return render(request, 'inventory/market.html', context)
+
 def adventure(request):
     player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
 
@@ -19,6 +25,20 @@ def adventure(request):
 
     context = {'player': player, 'points_earned': points_earned, 'items_lost': items_lost}
     return render(request, 'inventory/adventure.html', context)
+
+def buy_item(request, item_id):
+    player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
+    item = Item.objects.get(pk=item_id)
+    
+    if player.points >= item.points:
+        player.points -= item.points
+        player.save()
+        Inventory.objects.create(player=player, item=item)
+
+    return redirect('market')
+
+def index(request):
+    return render(request, 'inventory/index.html')
 
 def calcular_pontos_aventura():
     # Implemente a lógica para calcular os pontos ganhos na aventura
