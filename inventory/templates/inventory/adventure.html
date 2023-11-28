@@ -1,6 +1,6 @@
 <!-- Conteúdo da aventura -->
 <h1>Aventura</h1>
-<p>Pontos ganhos: {{ request.session.points_earned|default:0 }}</p>
+<p>Pontos ganhos: {{ request.session.points_earned }}</p>
 
 <!-- Adicione o botão para iniciar a aventura -->
 <form method="post" action="{% url 'start_adventure' %}">

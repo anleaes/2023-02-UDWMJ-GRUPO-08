@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Item, Player, Inventory, Adventure
 
 def market(request):
@@ -7,8 +8,12 @@ def market(request):
     context = {'player': player, 'items': items}
     return render(request, 'inventory/market.html', context)
 
-def adventure(request):
+def start_adventure(request):
     player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
+    # Limpar os pontos ganhos da sessão
+    request.session.pop('points_earned', None)
+    return redirect('adventure')
+
 
     # Lógica para calcular os pontos ganhos e itens perdidos na aventura
     points_earned = calcular_pontos_aventura()
@@ -43,9 +48,7 @@ def index(request):
 
 def start_adventure(request):
     player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
-    # Limpar os pontos ganhos da sessão
-    request.session.pop('points_earned', None)
-    return redirect('adventure')
+    
 
     # Lógica para iniciar a aventura
     # Aqui você pode realizar as ações necessárias, como adicionar pontos e remover itens
