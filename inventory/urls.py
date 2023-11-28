@@ -27,3 +27,4 @@ urlpatterns = [
     path('start_adventure/', start_adventure, name='start_adventure'),
 ]
 
+
