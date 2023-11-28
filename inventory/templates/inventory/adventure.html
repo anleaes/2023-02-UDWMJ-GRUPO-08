@@ -1,6 +1,6 @@
 <!-- Conteúdo da aventura -->
 <h1>Aventura</h1>
-<p>Pontos ganhos: {{ request.session.points_earned }}</p>
+<p>Pontos ganhos: {{ points_earned }}</p>
 
 <!-- Adicione o botão para iniciar a aventura -->
 <form method="post" action="{% url 'start_adventure' %}">
@@ -14,6 +14,5 @@
     <li>{{ item.name }}</li>
   {% endfor %}
 </ul>
-
 
 <a href="{% url 'market' %}">Ir para o mercado</a>
