@@ -1,4 +1,3 @@
-# inventory/views.py
 from django.shortcuts import render, redirect
 from .models import Item, Player, Inventory, Adventure
 
@@ -41,6 +40,19 @@ def index(request):
     market_url = 'market'
     adventure_url = 'adventure'
     return render(request, 'inventory/index.html', {'market_url': market_url, 'adventure_url': adventure_url})
+
+def start_adventure(request):
+    player = Player.objects.get(pk=1)  # Assumindo que há um jogador com ID 1
+
+    # Lógica para iniciar a aventura
+    # Aqui você pode realizar as ações necessárias, como adicionar pontos e remover itens
+    # Exemplo: Remover até 3 itens comprados
+    items_bought = Inventory.objects.filter(player=player)[:3]
+    for item in items_bought:
+        item.delete()
+
+    # Redirecione de volta para a página de aventura
+    return redirect('adventure')
 
 def calcular_pontos_aventura():
     # Implemente a lógica para calcular os pontos ganhos na aventura

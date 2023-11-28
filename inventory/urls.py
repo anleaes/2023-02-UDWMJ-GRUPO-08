@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, market, adventure, buy_item
+from .views import index, market, adventure, buy_item, start_adventure
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('market/', market, name='market'),
     path('adventure/', adventure, name='adventure'),
     path('buy_item/<int:item_id>/', buy_item, name='buy_item'),
+    path('start_adventure/', start_adventure, name='start_adventure'),
 ]
 
