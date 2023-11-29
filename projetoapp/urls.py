@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('core.urls', namespace='core')),
     path('categorias/', include('categories.urls', namespace='categories')),
     path('jogadores/', include('players.urls', namespace='players')),
+    path('itens/', include('items.urls', namespace='items')),
 ]
 

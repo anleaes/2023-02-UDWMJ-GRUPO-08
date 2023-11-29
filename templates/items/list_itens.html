@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Items - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Items</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+    <a href="{% url 'items:add_item' %}">Cadastro do novo item</a>
+<br />
+<br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>
+                                {% if item.is_active == True %}
+                                    Ativo
+                                {% endif %}
+                                {% if item.is_active == False %}
+                                    Inativo
+                                {% endif %}
+                            </td>
+                            <td>{{ item.category }}</td>
+                            <td>
+                                <img src="{{ item.photo.url }}" width="50" height="50">
+                            </td>
+                            <td>
+                                <a href="{% url 'items:edit_item' item.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>    
+                                <a href="{% url 'items:delete_item' item.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

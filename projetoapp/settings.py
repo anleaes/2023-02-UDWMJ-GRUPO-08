@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'categories.apps.CategoriesConfig',
     'widget_tweaks',
     'players.apps.PlayersConfig',
-
+    'items.apps.ItemsConfig',
 ]
 
 MIDDLEWARE = [
