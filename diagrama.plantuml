@@ -1,0 +1,51 @@
+@startuml
+
+class Category{
+    name: CharField
+    description: TextField
+}
+
+class Item{
+    name: CharField
+    description: TextField  
+    photo: ImageField 
+    category: ForeignKeyCategory
+}
+
+class Inventory{ 
+    item: ForeignKeyItem 
+    player: ForeignKeyPlayer
+}
+
+class Player{
+    name: CharField
+    address: TextField    
+    email: EmailField  
+    gender: CharFieldChoices  
+}
+
+class Account{
+username: CharField
+password: CharField
+}
+
+Item *-- Category
+Player --* Inventory
+Item --* Inventory
+Account --* Category
+Account --* Inventory
+Account --* Player
+Account --* Item
+
+'tipos de dados para formularios webs
+'CharField
+'TextField
+'DateTimeField
+'BooleanField
+'ImageField
+'FileField
+'DateField
+'ForeignKey
+'EmailField
+'CharField CHOICES
+@enduml

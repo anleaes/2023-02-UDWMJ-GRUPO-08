@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Jogadores - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Jogadores</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'players:add_player' %}">Cadastro de novo jogador</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                        <tr>
+                            <th scope="row">{{ player.id }}</th>
+                            <td>{{ player.name }}</td>
+                            <td>{{ player.description }}</td>
+                            <td>
+                                <a href="{% url 'players:edit_player' player.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'players:delete_player' player.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

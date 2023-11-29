@@ -1,4 +1,12 @@
 db.sqlite3
-/inventarioapp/__pycache__/*
+/projetoapp/__pycache__/*
 /apps/categories/__pycache__/*
 /apps/categories/migrations/*
+/apps/accounts/__pycache__/*
+/apps/accounts/migrations/*
+/apps/inventories/__pycache__/*
+/apps/inventories/migrations/*
+/apps/items/__pycache__/*
+/apps/items/migrations/*
+/apps/players/__pycache__/*
+/apps/players/migrations/*
