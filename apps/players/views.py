@@ -19,7 +19,7 @@ def add_player(request):
 
 def list_players(request):
     template_name = 'players/list_players.html'
-    players = Players.objects.filter()
+    players = Player.objects.filter()
     context = {
         'players': players
     }
