@@ -1,0 +1,4 @@
+db.sqlite3
+/inventarioapp/__pycache__/*
+/apps/categories/__pycache__/*
+/apps/categories/migrations/*
