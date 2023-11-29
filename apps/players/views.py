@@ -41,4 +41,4 @@ def edit_player(request, id_player):
 def delete_player(request, id_player):
     player = Player.objects.get(id=id_player)
     player.delete()
-    return redirect('players:list_categoriesplayers')
+    return redirect('players:list_players')
