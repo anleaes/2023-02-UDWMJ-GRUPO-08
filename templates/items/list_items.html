@@ -35,14 +35,6 @@
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.name }}</td>
                             <td>{{ item.description }}</td>
-                            <td>
-                                {% if item.is_active == True %}
-                                    Ativo
-                                {% endif %}
-                                {% if item.is_active == False %}
-                                    Inativo
-                                {% endif %}
-                            </td>
                             <td>{{ item.category }}</td>
                             <td>
                                 <img src="{{ item.photo.url }}" width="50" height="50">

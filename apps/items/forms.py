@@ -1,8 +1,8 @@
 from django import forms
-from .models import item
+from .models import Item
 
 class ItemForm(forms.ModelForm):
 
     class Meta:
-        model = item
+        model = Item
         exclude = ('created_on' , 'updated_on',)

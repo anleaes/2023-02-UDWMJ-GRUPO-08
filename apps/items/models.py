@@ -2,7 +2,7 @@ from django.db import models
 from categories.models import Category
 
 # Create your models here.
-class item(models.Model):
+class Item(models.Model):
     name = models.CharField('Nome', max_length=50)
     description = models.TextField('Descricao', max_length=100)
     photo = models.ImageField('Foto', upload_to='photos')
