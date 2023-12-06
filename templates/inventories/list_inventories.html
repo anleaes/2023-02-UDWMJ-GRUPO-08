@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Inventarios - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Inventarios</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+            <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Jogador</th>
+                    <th scope="col">Itens do inventario</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inventory in inventories %}
+                        <tr>
+                            <th scope="row">
+                                {% if inventory.status == 'Inativo'%}
+                                    <p style="color:darkgray;" >{{ inventory.id }}</p>
+                                {% else %}
+                                    {{ inventory.id }}
+                                {% endif %}
+                            </th>
+                            <td>
+                                {% if inventory.status == 'Inativo'%}
+                                    <p style="color:darkgray;" >{{ inventory.status }}</p>
+                                {% else %}
+                                    {{ inventory.status }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% for player in players %}
+                                    {% if inventory.player_id == player.id %}
+                                        {% if inventory.status == 'Inativo'%}
+                                            <p style="color:darkgray;" >{{ player.name }}</p>
+                                        {% else %}
+                                            {{ player.name }}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}   
+                            </td>
+                            <td>
+                                {% if inventory.status == 'Inativo'%}
+                                    <a href="#" class="btn btn-primary btn-sm disabled">Adicionar itens</a>
+                                {% else %}
+                                    <a href="{% url 'inventories:add_inventory_item' inventory.id %}" class="btn btn-primary btn-sm">Adicionar itens</a>
+                                {% endif %}
+                                <br /><br />
+                                {% for inventory_item in inventory_items %}
+                                    {% if inventory_item.inventory_id == inventory.id %}
+                                        Item: {{ inventory_item.item}}<br /> 
+                                        Quantidade: {{ inventory_item.quantity}}<br />
+                                        <a href="{% url 'inventories:delete_inventory_item' inventory_item.id %}">Excluir Item</a><br /><br />
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'inventories:edit_inventory_status' inventory.id %}" class="btn btn-danger btn-sm ">Alterar Status</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'inventories:delete_inventory' inventory.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

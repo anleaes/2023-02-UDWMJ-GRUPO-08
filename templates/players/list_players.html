@@ -27,6 +27,7 @@
                     <th scope="col">Genero</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,9 @@
                             <td>
                                 <a href="{% url 'players:delete_player' player.id %}" class="btn btn-danger btn-sm ">Excluir</a>
                             </td>
+                            <td>   
+                                <a href="{% url 'inventories:add_inventory' player.id %}" class="btn btn-danger btn-sm ">Criar inventario</a>
+                           </td>
                         </tr> 
                     {% endfor %}
                 </tbody>

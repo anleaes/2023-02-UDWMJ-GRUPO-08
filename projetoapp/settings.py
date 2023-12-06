@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'players.apps.PlayersConfig',
     'items.apps.ItemsConfig',
+    'inventories.apps.InventoriesConfig',
 ]
 
 MIDDLEWARE = [
