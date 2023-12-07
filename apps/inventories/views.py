@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import InventoryForm, InventoryItemForm
 from .models import Inventory , InventoryItem, Item, Player
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_inventory(request, id_player):
     template_name = 'inventories/add_inventory.html'
     context = {}
@@ -33,11 +35,13 @@ def list_inventories(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_inventory(request, id_inventory):
     inventory = Inventory.objects.get(id=id_inventory)
     inventory.delete()
     return redirect('inventories:list_inventories')
 
+@login_required(login_url='/contas/login/')
 def add_inventory_item(request, id_inventory):
     template_name = 'inventories/add_inventory_item.html'
     context = {}
@@ -53,11 +57,13 @@ def add_inventory_item(request, id_inventory):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_inventory_item(request, id_inventory_item):
     inventoryitem = InventoryItem.objects.get(id=id_inventory_item)
     inventoryitem.delete()
     return redirect('inventories:list_inventories')
 
+@login_required(login_url='/contas/login/')
 def edit_inventory_status(request, id_inventory):
     template_name = 'inventories/edit_inventory_status.html'
     context ={}

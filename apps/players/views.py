@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PlayerForm
 from .models import Player
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+@login_required(login_url='/contas/login/')
 def add_player(request):
     template_name = 'players/add_player.html'
     context = {}
@@ -16,7 +19,8 @@ def add_player(request):
     form = PlayerForm()
     context['form'] = form
     return render(request, template_name, context)
-
+    
+@login_required(login_url='/contas/login/')
 def list_players(request):
     template_name = 'players/list_players.html'
     players = Player.objects.filter()
@@ -25,6 +29,7 @@ def list_players(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_player(request, id_player):
     template_name = 'players/add_player.html'
     context ={}
@@ -38,6 +43,7 @@ def edit_player(request, id_player):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_player(request, id_player):
     player = Player.objects.get(id=id_player)
     player.delete()

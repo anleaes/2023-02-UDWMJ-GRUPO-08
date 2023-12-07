@@ -25,6 +25,7 @@ urlpatterns = [
     path('jogadores/', include('players.urls', namespace='players')),
     path('itens/', include('items.urls', namespace='items')),
     path('inventarios/', include('inventories.urls', namespace='inventories')),
+    path('contas/', include('accounts.urls', namespace='accounts')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
