@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ItemForm
 from .models import Item
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+@login_required(login_url='/contas/login/')
 def add_item(request):
     template_name = 'items/add_item.html'
     context = {}
@@ -17,6 +20,7 @@ def add_item(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_items(request):
     template_name = 'items/list_items.html'
     item = Item.objects.filter()
@@ -25,6 +29,7 @@ def list_items(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_item(request, id_item):
     template_name = 'items/add_item.html'
     context ={}
@@ -38,6 +43,7 @@ def edit_item(request, id_item):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_item(request, id_item):
     item = item.objects.get(id=id_item)
     item.delete()
